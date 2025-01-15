@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { google, outlook, office365, yahoo, ics } from "calendar-link";
+import Image from "next/image";
 
 export default function Home() {
 
@@ -17,23 +18,29 @@ export default function Home() {
 
 
   return (
-    <div className="container">
-      <header className="header">
-        <h1 className="logo">Treasures 4 Femmes</h1>
-        <nav>
-          <a href="#about" className="nav-link">About</a>
-          <a href="#event" className="nav-link">Open House</a>
-          <a href="#contact" className="nav-link">Contact</a>
-        </nav>
-      </header>
-
-      <section className="hero-section">
-        <h2 className="hero-text">Celebrate Women’s Style & Empowerment</h2>
-        <p className="hero-subtext">
-          Join us for an exclusive open house event with trendy apparel & gifts!
-        </p>
-        <div onClick={() => setIsOpen(!isOpen)} className="relative inline-block">
-          <button className="inline-block w-full px-4 py-3 border border-zinc-500 shadow-lg rounded">
+    <section>
+    {/* <!-- Navbar --> */}
+    <nav className="navbar">
+      <div className="logo">4 Femme</div>
+      <div>
+        <a href="#">Home</a>
+        <a href="#">Blog</a>
+        <a href="#">Services</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </nav>
+  
+    <section className="hero-section flex flex-col md:flex-row items-center">
+  <div className="hero-text md:w-1/2">
+    <h1>4 Femme Open House</h1>
+    <p>Join us for an evening of trendy apparel, gifts, and fun!</p>
+    <p>
+      <strong>Location:</strong> Seattle, WA<br />
+      <strong>Date:</strong> February 22, 2025<br />
+      <strong>Time:</strong> 5:00 PM - 7:00 PM (PST)
+    </p>
+    <div onClick={() => setIsOpen(!isOpen)} className="relative inline-block">
+          <button className="inline-block w-full px-4 py-3 bg-orange-950 border text-white border-zinc-500 shadow-lg rounded">
             Add to your Calendar!
           </button>
           <ul
@@ -62,38 +69,17 @@ export default function Home() {
             </li>
           </ul>
         </div>
+  </div>
 
-
-      </section>
-
-      <section id="about" className="section">
-        <h2 className="section-title">About Treasures 4 Femmes</h2>
-        <p className="text">
-          Treasures 4 Femmes is a boutique for modern women who love trendy and
-          unique gifts, clothing, and accessories. We’re committed to offering
-          chic, stylish, and memorable treasures.
-        </p>
-      </section>
-
-      <section id="event" className="section">
-        <h2 className="section-title">Open House Event Details</h2>
-        <p className="text">
-          <strong>Date:</strong> February 22, 2025 <br />
-          <strong>Time:</strong> 5:00 PM <br />
-          <strong>Location:</strong> Seattle, WA
-        </p>
-        <p className="highlight">Enjoy refreshments, special deals, and giveaways!</p>
-      </section>
-
-      <section id="contact" className="section">
-        <h2 className="section-title">Get in Touch</h2>
-        <p className="text">We’d love to hear from you! Email us at:</p>
-        <a href="mailto:info@treasures4femmes.com" className="email-link">info@treasures4femmes.com</a>
-      </section>
-
-      <footer className="footer">
-        <p className="footer-text">© 2025 Treasures 4 Femmes. All rights reserved.</p>
-      </footer>
-    </div>
+  <div className="illustration-container relative w-full md:w-1/2 h-[400px] lg:h-[600px]">
+    <Image
+      src="/4femme.png"
+      alt="Stylish open house display"
+      fill
+      className="object-cover rounded-lg"
+    />
+  </div>
+</section>
+  </section>
   );
 }
