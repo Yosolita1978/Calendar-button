@@ -1,10 +1,23 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useRef, useEffect  } from "react";
 import { google, outlook, office365, yahoo, ics } from "calendar-link";
 import Image from "next/image";
 
 export default function Home() {
+
+  const menuRef = useRef(null);
+
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => document.removeEventListener('mousedown', handleClickOutside);
+}, [menuRef]);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,7 +52,7 @@ export default function Home() {
       <strong>Date:</strong> February 22, 2025<br />
       <strong>Time:</strong> 5:00 PM - 7:00 PM (PST)
     </p>
-    <div onClick={() => setIsOpen(!isOpen)} className="relative inline-block">
+    <div onClick={() => setIsOpen(!isOpen)} className="relative inline-block" ref={menuRef}>
           <button className="inline-block w-full px-4 py-3 bg-orange-950 border text-white border-zinc-500 shadow-lg rounded">
             Add to your Calendar!
           </button>
